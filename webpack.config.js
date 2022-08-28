@@ -8,7 +8,7 @@ module.exports = {
   mode: "development",
   entry: "./src/index.js",
   output: {
-    filename: "bundle.[hash].js",
+    filename: "bundle.[fullhash].js",
   },
   devtool: "inline-source-map",
   module: {
@@ -41,22 +41,5 @@ module.exports = {
     historyApiFallback: true,
     open: true,
     hot: true,
-  },
-  resolve: {
-    modules: ["node_modules"],
-    extensions: [".jsx", ".js"],
-    unsafeCache: true,
-    alias: {
-      config: path.resolve(__dirname, "config"),
-    },
-  },
-  externals: {
-    Config: require("./config/config.js")(process.env),
-  },
-  optimization: {
-    runtimeChunk: "single",
-    splitChunks: {
-      chunks: "all",
-    },
   },
 };
